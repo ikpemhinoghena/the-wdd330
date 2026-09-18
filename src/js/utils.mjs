@@ -1,3 +1,15 @@
+export function renderListWithTemplate(
+  templateFn,
+  parentElement,
+  list,
+  position = 'afterbegin',
+  clear = false,
+) {
+  if (clear === true) parentElement.innerHTML = '';
+  const html = list.map(templateFn).join('');
+  parentElement.insertAdjacentHTML(position, html);
+}
+
 export function getParam(param) {
   const params = new URLSearchParams(window.location.search);
   return params.get(param);
