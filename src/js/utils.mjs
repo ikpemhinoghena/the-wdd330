@@ -11,12 +11,19 @@ export async function loadTemplate(path) {
 
 export async function loadHeaderFooter() {
   const [headerTemplate, footerTemplate] = await Promise.all([
-    loadTemplate('/partials/header.html'),
-    loadTemplate('/partials/footer.html'),
+    loadTemplate(`${import.meta.env.BASE_URL}partials/header.html`),
+    loadTemplate(`${import.meta.env.BASE_URL}partials/footer.html`),
   ]);
   const header = qs('#main-header');
   const footer = qs('#main-footer');
-  if (header) renderWithTemplate(headerTemplate, header, null, updateCartCount);
+  if (header) {
+    renderWithTemplate(
+      headerTemplate.replaceAll('%BASE_URL%', import.meta.env.BASE_URL),
+      header,
+      null,
+      updateCartCount,
+    );
+  }
   if (footer) renderWithTemplate(footerTemplate, footer);
 }
 
