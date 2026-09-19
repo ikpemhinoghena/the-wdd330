@@ -1,4 +1,9 @@
-import { getLocalStorage, loadHeaderFooter } from './utils.mjs';
+import {
+  getLocalStorage,
+  setLocalStorage,
+  loadHeaderFooter,
+  updateCartCount,
+} from './utils.mjs';
 
 loadHeaderFooter();
 
@@ -7,6 +12,7 @@ function renderCartContents() {
   const cartItems = Array.isArray(storedCart) ? storedCart : [storedCart];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector('.product-list').innerHTML = htmlItems.join('');
+  document.querySelector('#clear-cart-control').hidden = cartItems.length === 0;
 }
 
 function cartItemTemplate(item) {
@@ -29,3 +35,9 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
+
+document.querySelector('#clear-cart').addEventListener('click', () => {
+  setLocalStorage('so-cart', []);
+  renderCartContents();
+  updateCartCount();
+});
