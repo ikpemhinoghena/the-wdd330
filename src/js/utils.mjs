@@ -1,3 +1,25 @@
+export function renderWithTemplate(template, parentElement, data, callback) {
+  parentElement.innerHTML = template;
+  if (callback) callback(data);
+}
+
+export async function loadTemplate(path) {
+  const response = await fetch(path);
+  if (!response.ok) throw new Error(`Could not load template: ${path}`);
+  return response.text();
+}
+
+export async function loadHeaderFooter() {
+  const [headerTemplate, footerTemplate] = await Promise.all([
+    loadTemplate('/partials/header.html'),
+    loadTemplate('/partials/footer.html'),
+  ]);
+  const header = qs('#main-header');
+  const footer = qs('#main-footer');
+  if (header) renderWithTemplate(headerTemplate, header, null, updateCartCount);
+  if (footer) renderWithTemplate(footerTemplate, footer);
+}
+
 export function updateCartCount() {
   const cartLink = qs('.cart a');
   if (!cartLink) return;
