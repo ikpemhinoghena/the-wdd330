@@ -35,7 +35,7 @@ export default class ProductDetails {
     document.querySelector('.product-detail').innerHTML = `
       <h3>${product.Brand.Name}</h3>
       <h2 class="divider">${product.NameWithoutBrand}</h2>
-      <img class="divider" src="${product.Image}" alt="${product.Name}" />
+      <img class="divider" src="${product.Images.PrimaryLarge}" alt="${product.Name}" />
       <p class="product-card__price">$${product.FinalPrice.toFixed(2)}</p>
       <p class="product__color">${product.Colors[0].ColorName}</p>
       <p class="product__description">${product.DescriptionHtmlSimple}</p>
