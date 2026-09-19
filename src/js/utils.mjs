@@ -1,3 +1,23 @@
+export function updateCartCount() {
+  const cartLink = qs('.cart a');
+  if (!cartLink) return;
+  const storedCart = getLocalStorage('so-cart') || [];
+  const count = Array.isArray(storedCart) ? storedCart.length : 1;
+  let badge = qs('.cart-count', cartLink);
+  if (!badge) {
+    badge = document.createElement('span');
+    badge.className = 'cart-count';
+    badge.setAttribute('aria-hidden', 'true');
+    cartLink.appendChild(badge);
+  }
+  badge.textContent = count;
+  badge.hidden = count === 0;
+  cartLink.setAttribute(
+    'aria-label',
+    `Shopping cart, ${count} ${count === 1 ? 'item' : 'items'}`,
+  );
+}
+
 export function renderListWithTemplate(
   templateFn,
   parentElement,

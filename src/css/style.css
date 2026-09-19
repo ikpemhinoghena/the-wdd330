@@ -127,6 +127,26 @@ button {
   width: 25px;
 }
 
+.cart a {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-count {
+  position: absolute;
+  top: -0.6em;
+  right: -0.6em;
+  min-width: 1.4em;
+  padding: 0.15em 0.3em;
+  border-radius: 1em;
+  background-color: var(--tertiary-color);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-align: center;
+}
+
 .cart:hover svg {
   fill: gray;
 }
