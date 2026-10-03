@@ -44,7 +44,7 @@ export default class CheckoutProcess {
     return this.orderTotal;
   }
 
-  checkout(form = this.form) {
+  async checkout(form = this.form) {
     const values = new FormData(form);
     const order = {
       orderDate: new Date().toISOString(),
@@ -63,6 +63,16 @@ export default class CheckoutProcess {
       tax: this.tax,
     };
 
-    return this.dataSource.checkout(order);
+    let response;
+    try {
+      response = await this.dataSource.checkout(order);
+    } catch (error) {
+      console.error('Checkout failed:', error);
+      return null;
+    }
+
+    localStorage.removeItem('so-cart');
+    window.location.href = `${import.meta.env.BASE_URL}checkout/success.html`;
+    return response;
   }
 }
