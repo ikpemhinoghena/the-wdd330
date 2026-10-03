@@ -305,3 +305,149 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* ---- Cart footer / checkout link ---- */
+.cart-footer {
+  margin-top: 1.5rem;
+  text-align: right;
+}
+
+.checkout-link {
+  display: inline-block;
+  padding: 0.5em 2em;
+  background-color: var(--secondary-color);
+  color: white;
+  text-decoration: none;
+  font-size: var(--large-font);
+  cursor: pointer;
+}
+
+.checkout-link:hover {
+  background-color: var(--tertiary-color);
+}
+
+/* ---- Checkout page layout ---- */
+.checkout-section {
+  max-width: 900px;
+  margin: auto;
+}
+
+.checkout-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media screen and (min-width: 700px) {
+  .checkout-wrapper {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .order-summary {
+    flex: 0 0 250px;
+  }
+
+  .checkout-form {
+    flex: 1;
+  }
+}
+
+/* ---- Order Summary ---- */
+.order-summary {
+  background: #f9f9f9;
+  border: 1px solid var(--light-grey);
+  padding: 1rem 1.25rem;
+}
+
+.order-summary h3 {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-headline);
+  font-size: 1.1em;
+  color: var(--tertiary-color);
+}
+
+.order-summary__list {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 0.3rem 1rem;
+}
+
+.order-summary__list dt {
+  font-weight: normal;
+}
+
+.order-summary__list dd {
+  text-align: right;
+  font-weight: bold;
+}
+
+.order-summary__total-label {
+  margin-top: 0.5rem;
+  border-top: 2px solid var(--primary-color);
+  padding-top: 0.4rem;
+  font-weight: bold;
+}
+
+.order-summary__total-value {
+  margin-top: 0.5rem;
+  border-top: 2px solid var(--primary-color);
+  padding-top: 0.4rem;
+  text-align: right;
+  font-size: 1.1em;
+  color: var(--tertiary-color);
+}
+
+/* ---- Checkout Form ---- */
+.checkout-form__fieldset {
+  border: 1px solid var(--light-grey);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.checkout-form__fieldset legend {
+  font-family: var(--font-headline);
+  font-size: 1em;
+  padding: 0 0.4em;
+  color: var(--tertiary-color);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.75rem;
+}
+
+.form-group label {
+  font-size: var(--small-font);
+  margin-bottom: 0.2rem;
+  font-weight: bold;
+}
+
+.form-group input {
+  padding: 0.4em 0.6em;
+  border: 1px solid var(--light-grey);
+  font-size: 1rem;
+  font-family: var(--font-body);
+}
+
+.form-group input:focus {
+  outline: 2px solid var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.checkout-submit {
+  display: block;
+  width: 100%;
+  margin-top: 0.5rem;
+}
